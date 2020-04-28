@@ -1,0 +1,145 @@
+@import "/imports/ui/stylesheets/variables/_all";
+@import "/imports/ui/components/whiteboard/whiteboard-toolbar/styles";
+
+:root {
+  --innerToastWidth: 17rem;
+  --iconWrapperSize: 2rem;
+}
+
+.enter {
+  opacity: 0.01;
+}
+
+.enterActive {
+  opacity: 1;
+
+  :global(.animationsEnabled) & {
+    transition: opacity 400ms ease-in;
+  }
+}
+
+.appear {
+  opacity: 0.01;
+}
+
+.appearActive {
+  opacity: 1;
+
+  :global(.animationsEnabled) & {
+    transition: opacity 400ms ease-in;
+  }
+}
+
+.presentationArea {
+  order: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.whiteboardSizeAvailable {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.svgContainer{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.presentationToolbar{
+  display: flex;
+  overflow-x: visible;
+  order: 2;
+  position: absolute;
+  bottom: 0;
+}
+
+.svgStyles {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  //always show an arrow by default
+  cursor: default;
+
+  //double click on the whiteboard shouldn't change the cursor
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.presentationContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.innerToastWrapper {
+  display: flex;
+  flex-direction: row;
+  width: var(--innerToastWidth);
+}
+
+.toastTextContent {
+  position: relative;
+  overflow: hidden;
+}
+
+.presentationName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.toastIcon {
+  margin-right: var(--sm-padding-x);
+  [dir="rtl"] & {
+    margin-right: 0;
+    margin-left: var(--sm-padding-x);
+  }
+}
+
+.iconWrapper {
+  background-color: var(--color-primary);
+  width: var(--iconWrapperSize);
+  height: var(--iconWrapperSize);
+  border-radius: 50%;
+
+  > i {
+    position: relative;
+    left: var(--md-padding-y);
+    top: var(--sm-padding-y);
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+
+    [dir="rtl"] & {
+      left: 0;
+      right: var(--md-padding-y);
+   }
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
